@@ -1,0 +1,12 @@
+div.block {
+    border: 1px solid #000000;
+    max-width: 200px;
+    max-height: 400px;
+    overflow:scroll;
+  }
+  div.block::-webkit-scrollbar {
+      display: none;
+  }
+  ul {
+    list-style-type: none;
+  }

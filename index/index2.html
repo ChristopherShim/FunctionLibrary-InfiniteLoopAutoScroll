@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main2.css" />
+  </head>
+  <body>
+    <div class="block" id="container">
+      <ul data-current="0">
+        <li class="panel">
+          <h3>Post 0</h3>
+        </li>
+        <li class="panel">
+          <h3>Post 1</h3>
+        </li>
+        <li class="panel">
+          <h3>Post 2</h3>
+        </li>
+        <li class="panel">
+          <h3>Post 3</h3>
+        </li>
+        <li class="panel">
+          <h3>Post 4</h3>
+        </li>
+        <li class="panel">
+          <h3>Post 5</h3>
+        </li>
+        <li class="panel">
+          <h3>Post 6</h3>
+        </li>
+        <li class="panel">
+          <h3>Post 7</h3>
+        </li>
+        <li class="panel">
+          <h3>Post 8</h3>
+        </li>
+        <li class="panel">
+          <h3>Post 9</h3>
+        </li>
+        <li class="panel">
+          <h3>Post10</h3>
+        </li>
+        <li class="panel">
+          <h3>Post 11</h3>
+        </li>
+        <li class="panel">
+          <h3>Post 12</h3>
+        </li>
+      </ul>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollToPlugin.min.js"></script>
+
+    <script>
+        var div = document.getElementById("container");
+      document.addEventListener("DOMContentLoaded", function () {
+        var div = document.getElementById("container");
+        div.addEventListener("scroll", function () {
+          var max_scroll = this.scrollHeight - this.clientHeight;
+          var current_scroll = this.scrollTop;
+          var bottom = 100;
+          if (current_scroll + bottom >= max_scroll) {
+            var ul = document.getElementsByTagName("ul")[0];
+            var current = parseInt(ul.dataset.current, 10);
+            var li = document.getElementsByTagName("li")[current];
+            var new_li = li.cloneNode(true);
+            ul.appendChild(new_li);
+            ul.dataset.current = current + 1;
+          }
+        });
+      });
+
+      let autoscroll = gsap.to(".block", {
+        duration: 100,
+        scrollTo: {
+          x: 0,
+          y: 1000,
+        },
+      });
+
+      div.addEventListener("mouseover", () => autoscroll.pause());
+      div.addEventListener("mouseleave", () => autoscroll.resume());
+    </script>
+  </body>
+</html>

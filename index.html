@@ -9,9 +9,9 @@
   </head>
   <body>
     <div class="maincontainer">
-      <div class="wrapper">
-        <div class="boxes" id="boxes2">
-          <div class="box">1</div>
+      <div class="wrapper" id="wrapper">
+        <div class="boxes" id="boxes1" data-current="0">
+          <div class="box">A</div>
           <div class="box">2</div>
           <div class="box">3</div>
           <div class="box">4</div>
@@ -22,6 +22,32 @@
           <div class="box">9</div>
           <div class="box">10</div>
         </div>
+<!-- 
+        <div class="boxes" id="boxes2">
+          <div class="box">B</div>
+          <div class="box">2</div>
+          <div class="box">3</div>
+          <div class="box">4</div>
+          <div class="box">5</div>
+          <div class="box">6</div>
+          <div class="box">7</div>
+          <div class="box">8</div>
+          <div class="box">9</div>
+          <div class="box">10</div>
+        </div>
+
+        <div class="boxes" id="boxes3">
+          <div class="box">C</div>
+          <div class="box">2</div>
+          <div class="box">3</div>
+          <div class="box">4</div>
+          <div class="box">5</div>
+          <div class="box">6</div>
+          <div class="box">7</div>
+          <div class="box">8</div>
+          <div class="box">9</div>
+          <div class="box">10</div>
+        </div> -->
       </div>
     </div>
 
@@ -30,27 +56,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollToPlugin.min.js"></script>
 
+
     <script>
-      var wrap = gsap.utils.wrap(-100, 400);
-      let boxelement = document.getElementById("boxes2")
+      // var wrap = gsap.utils.wrap(-1000, 400);
+      // let boxelement = document.getElementById("wrapper")
 
-      gsap.set(".box", {
-        y: (i) => i * 50,
-      });
+      // gsap.set(".box", {
+      //   y: (i) => i * 50,
+      // });
 
-      let autoscroll = gsap.to(".box", {
-        duration: 10,
-        ease: "none",
-        y: "-=500", //move each box 500px to right
-        modifiers: {
-          y: gsap.utils.unitize(wrap), //force y value to wrap when it reaches -100
-        },
-        repeat: -1,
-      });
+      // let autoscroll = gsap.to(".box", {
+      //   duration: 10,
+      //   ease: "none",
+      //   y: "-=500", //move each box 500px to right
+      //   modifiers: {
+      //     y: gsap.utils.unitize(wrap), //force y value to wrap when it reaches -100
+      //   },
+      //   repeat: -1,
+      // });
+
 
 
       boxelement.addEventListener("mouseover", ()=> autoscroll.pause())
       boxelement.addEventListener("mouseleave", ()=> autoscroll.resume())
     </script>
+
+
   </body>
 </html>
