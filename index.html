@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="maincontainer">
+      <div class="wrapper">
+        <div class="boxes" id="boxes2">
+          <div class="box">1</div>
+          <div class="box">2</div>
+          <div class="box">3</div>
+          <div class="box">4</div>
+          <div class="box">5</div>
+          <div class="box">6</div>
+          <div class="box">7</div>
+          <div class="box">8</div>
+          <div class="box">9</div>
+          <div class="box">10</div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/ScrollToPlugin.min.js"></script>
+
+    <script>
+      var wrap = gsap.utils.wrap(-100, 400);
+      let boxelement = document.getElementById("boxes2")
+
+      gsap.set(".box", {
+        y: (i) => i * 50,
+      });
+
+      let autoscroll = gsap.to(".box", {
+        duration: 10,
+        ease: "none",
+        y: "-=500", //move each box 500px to right
+        modifiers: {
+          y: gsap.utils.unitize(wrap), //force y value to wrap when it reaches -100
+        },
+        repeat: -1,
+      });
+
+
+      boxelement.addEventListener("mouseover", ()=> autoscroll.pause())
+      boxelement.addEventListener("mouseleave", ()=> autoscroll.resume())
+    </script>
+  </body>
+</html>
